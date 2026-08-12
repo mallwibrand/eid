@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عيد رمضان خليفة — السيرة الذاتية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EFF2EC;
+    --paper-edge: #E3E7DE;
+    --ink: #1C2B22;
+    --ink-soft: #4B5A50;
+    --bronze: #8A6E4B;
+    --bronze-deep: #6E5638;
+    --rule: #C9CFC2;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    background: #DEE2D8;
+    color: var(--ink);
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 40px 16px;
+  }
+
+  .page{
+    width: 100%;
+    max-width: 780px;
+    background: var(--paper);
+    border: 1px solid var(--paper-edge);
+    padding: 64px 60px 56px;
+    position: relative;
+  }
+
+  /* ---------- language toggling: no inline styles anywhere, CSS only ---------- */
+  .lang-en{ display: none; }
+  html[dir="ltr"] .lang-ar{ display: none; }
+  html[dir="ltr"] .lang-en{ display: revert; }
+
+  /* ---------- header ---------- */
+
+  .header{ display:flex; align-items:center; gap: 30px; margin-bottom: 30px; }
+
+  .avatar{
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink:0;
+    background: #dfe3d6;
+    border: 1px solid var(--paper-edge);
+  }
+
+  .heading{ flex:1; min-width:0; }
+
+  .name{
+    font-family: 'El Messiri', serif;
+    font-weight: 700;
+    font-size: 34px;
+    color: var(--ink);
+    margin: 0 0 6px;
+    line-height: 1.2;
+  }
+
+  .title{ font-size: 15px; color: var(--bronze-deep); font-weight: 500; letter-spacing: .3px; }
+
+  .lane-divider{ margin: 30px 0 34px; }
+  .lane-divider .line-a{ height: 2px; background: var(--bronze); }
+  .lane-divider .line-b{ height: 1px; background: var(--rule); margin-top: 4px; }
+
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px 22px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .contact-row span b{ color: var(--ink); font-weight: 500; }
+
+  section{ margin-top: 34px; }
+
+  .section-label{ display:flex; align-items:center; gap: 10px; margin-bottom: 14px; }
+  .section-label .dash{ width: 26px; height: 2px; background: var(--bronze); flex-shrink:0; }
+  .section-label h2{
+    font-family: 'El Messiri', serif;
+    font-size: 16.5px;
+    font-weight: 600;
+    color: var(--bronze-deep);
+    margin:0;
+    letter-spacing: .2px;
+  }
+
+  p.body-text{ font-size: 15px; line-height: 2; color: var(--ink); margin: 0; }
+
+  .edu-line{ font-size: 15px; line-height: 1.9; }
+  .edu-line .degree{ font-weight: 500; color: var(--ink); }
+
+  .skills-text{ font-size: 15px; line-height: 2.1; color: var(--ink); }
+  .skills-text .sep{ color: var(--bronze); margin: 0 8px; font-weight: 700; }
+
+  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+
+  @media (max-width: 560px){
+    .two-col{ grid-template-columns: 1fr; gap: 24px; }
+    .page{ padding: 44px 24px 40px; }
+    .header{ gap: 18px; }
+    .name{ font-size: 27px; }
+  }
+
+  footer{
+    margin-top: 46px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* ---------- toolbar ---------- */
+
+  .toolbar{
+    width: 100%;
+    max-width: 780px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin: 0 auto 14px;
+    gap: 12px;
+  }
+
+  .lang-switch{ display:flex; border: 1px solid var(--bronze-deep); border-radius: 3px; overflow:hidden; }
+  .lang-switch button{
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border: none;
+    background: transparent;
+    color: var(--bronze-deep);
+    cursor: pointer;
+  }
+  .lang-switch button.active{ background: var(--bronze-deep); color: #F3F2EC; }
+
+  #downloadBtn{
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #F3F2EC;
+    background: var(--bronze-deep);
+    border: none;
+    padding: 11px 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    transition: background .15s ease;
+  }
+  #downloadBtn:hover{ background: #563f24; }
+  #downloadBtn:disabled{ opacity: .6; cursor: default; }
+
+  @media print{
+    .toolbar{ display:none; }
+    body{ background: #fff; padding:0; }
+    .page{ border:none; box-shadow:none; max-width:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="lang-switch">
+      <button id="btnAr" class="active" onclick="setLang('ar')">العربية</button>
+      <button id="btnEn" onclick="setLang('en')">English</button>
+    </div>
+    <button id="downloadBtn" onclick="downloadPDF()">
+      <span class="lang-ar">تحميل PDF</span>
+      <span class="lang-en">Download PDF</span>
+    </button>
+  </div>
+
+  <main class="page" id="cv">
+
+    <div class="header">
+      <img class="avatar" src="profile.jpg" alt="الصورة الشخصية">
+      <div class="heading">
+        <h1 class="name">
+          <span class="lang-ar">عيد رمضان خليفة</span>
+          <span class="lang-en">Eid Ramadan Khalifa</span>
+        </h1>
+        <div class="title">
+          <span class="lang-ar">ليسانس أصول الدين — أجيد التعامل مع الحاسب الآلي</span>
+          <span class="lang-en">Bachelor's in Islamic Theology (Usul al-Din) — Computer Proficient</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lane-divider">
+      <div class="line-a"></div>
+      <div class="line-b"></div>
+    </div>
+
+    <div class="contact-row">
+      <span>
+        <span class="lang-ar">هاتف: </span><span class="lang-en">Phone: </span><b dir="ltr">01097204999</b>
+      </span>
+      <span>
+        <span class="lang-ar">واتساب: </span><span class="lang-en">WhatsApp: </span><b dir="ltr">01097204999</b>
+      </span>
+    </div>
+
+    <section>
+      <div class="section-label"><span class="dash"></span>
+        <h2><span class="lang-ar">نبذة مهنية</span><span class="lang-en">Professional Summary</span></h2>
+      </div>
+      <p class="body-text lang-ar">
+        حاصل على ليسانس أصول الدين، وأجيد التعامل مع الحاسب الآلي، ولي خبرة سابقة في إدخال البيانات باستخدام برامج مايكروسوفت أوفيس.
+        أتميز بسرعة التعلم والقدرة على اكتساب مهارات تقنية جديدة بيُسر، مع حرصي على التطوير المستمر لنفسي رغم عدم حصولي حتى الآن على شهادات متخصصة في مجال الحاسب الآلي.
+      </p>
+      <p class="body-text lang-en">
+        I hold a Bachelor's degree in Islamic Theology (Usul al-Din) and am comfortable working with computers, with prior experience in data entry using Microsoft Office applications.
+        I'm a fast learner able to pick up new technical skills with ease, and I'm committed to ongoing self-development, despite not yet holding specialized computer certifications.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="dash"></span>
+        <h2><span class="lang-ar">الهدف المهني</span><span class="lang-en">Career Goal</span></h2>
+      </div>
+      <p class="body-text lang-ar">
+        أتطلع إلى الانضمام لفريق عمل يمنحني فرصة لتوظيف مهاراتي في التعامل مع الحاسب الآلي وإدخال البيانات،
+        والاستفادة من قدرتي على التعلم السريع لاكتساب مهارات تقنية جديدة، وذلك من خلال بيئة عمل مهنية تشجع على التطور والتدريب المستمر.
+      </p>
+      <p class="body-text lang-en">
+        I'm looking to join a professional team that gives me the opportunity to put my computer and data-entry skills to use,
+        and to build on my ability to learn quickly by picking up new technical skills, within a work environment that supports continuous growth and training.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="dash"></span>
+        <h2><span class="lang-ar">المؤهل العلمي</span><span class="lang-en">Education</span></h2>
+      </div>
+      <div class="edu-line lang-ar"><span class="degree">ليسانس أصول الدين</span></div>
+      <div class="edu-line lang-en"><span class="degree">Bachelor's Degree in Islamic Theology (Usul al-Din)</span></div>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="dash"></span>
+        <h2><span class="lang-ar">الخبرة العملية</span><span class="lang-en">Work Experience</span></h2>
+      </div>
+      <p class="body-text lang-ar">
+        عملت لمدة عام في المملكة العربية السعودية على جهاز الحاسب الآلي ضمن إدارة بيانات بإحدى الجهات،
+        حيث اكتسبت خبرة عملية في إدخال البيانات وتنظيمها والتعامل اليومي مع برامج الأوفيس.
+      </p>
+      <p class="body-text lang-en">
+        I worked for one year in Saudi Arabia on a computer within a data management department,
+        gaining hands-on experience in data entry, organization, and day-to-day use of Office applications.
+      </p>
+    </section>
+
+    <section class="two-col">
+      <div>
+        <div class="section-label"><span class="dash"></span>
+          <h2><span class="lang-ar">مهارات فنية</span><span class="lang-en">Technical Skills</span></h2>
+        </div>
+        <div class="skills-text lang-ar">
+          إجادة التعامل مع الحاسب الآلي<span class="sep">·</span>برامج مايكروسوفت أوفيس (Word - Excel)<span class="sep">·</span>إدخال وتنظيم البيانات<span class="sep">·</span>القدرة على تعلّم برامج وأنظمة جديدة بسرعة
+        </div>
+        <div class="skills-text lang-en">
+          Computer proficiency<span class="sep">·</span>Microsoft Office (Word, Excel)<span class="sep">·</span>Data entry &amp; organization<span class="sep">·</span>Fast learner of new software and systems
+        </div>
+      </div>
+      <div>
+        <div class="section-label"><span class="dash"></span>
+          <h2><span class="lang-ar">مهارات شخصية</span><span class="lang-en">Soft Skills</span></h2>
+        </div>
+        <div class="skills-text lang-ar">
+          الالتزام والانضباط<span class="sep">·</span>الدقة والانتباه للتفاصيل<span class="sep">·</span>سرعة التعلم والاستيعاب<span class="sep">·</span>العمل الجماعي<span class="sep">·</span>التواصل الفعّال<span class="sep">·</span>إجادة العمل تحت الضغط
+        </div>
+        <div class="skills-text lang-en">
+          Commitment &amp; discipline<span class="sep">·</span>Accuracy &amp; attention to detail<span class="sep">·</span>Fast learner<span class="sep">·</span>Teamwork<span class="sep">·</span>Effective communication<span class="sep">·</span>Works well under pressure
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span class="lang-ar">عيد رمضان خليفة</span>
+      <span class="lang-en">Eid Ramadan Khalifa</span>
+      &nbsp;•&nbsp; 01097204999
+    </footer>
+
+  </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+let currentLang = 'ar';
+
+function setLang(lang){
+  currentLang = lang;
+  const html = document.getElementById('htmlRoot');
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.getElementById('btnAr').classList.toggle('active', lang === 'ar');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+}
+
+async function downloadPDF(){
+  const btn = document.getElementById('downloadBtn');
+  const label = btn.querySelector(currentLang === 'ar' ? '.lang-ar' : '.lang-en');
+  const originalText = label.textContent;
+  btn.disabled = true;
+  label.textContent = currentLang === 'ar' ? 'جاري التجهيز...' : 'Preparing...';
+
+  const el = document.getElementById('cv');
+
+  try{
+    const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#EFF2EC' });
+    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+
+    const pdfWidth = 210; // A4 width in mm
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'mm', format: [pdfWidth, pdfHeight], orientation: 'portrait' });
+    pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+    const filename = currentLang === 'ar'
+      ? 'عيد_رمضان_خليفة_السيرة_الذاتية.pdf'
+      : 'Eid_Ramadan_Khalifa_CV.pdf';
+    pdf.save(filename);
+  } catch(err){
+    alert(currentLang === 'ar' ? 'حصل خطأ أثناء إنشاء الملف، جرّب تاني.' : 'Something went wrong generating the file, please try again.');
+  } finally {
+    btn.disabled = false;
+    label.textContent = originalText;
+  }
+}
+</script>
+
+</body>
+</html>
