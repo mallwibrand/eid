@@ -175,7 +175,8 @@
   @media print{
     .toolbar{ display:none; }
     body{ background: #fff; padding:0; }
-    .page{ border:none; box-shadow:none; max-width:none; }
+    .page{ border:none; box-shadow:none; max-width:none; width:100%; padding: 14mm 16mm; }
+    @page{ size: A4; margin: 0; }
   }
 </style>
 </head>
@@ -305,10 +306,9 @@
 
   </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 let currentLang = 'ar';
+const originalTitle = document.title;
 
 function setLang(lang){
   currentLang = lang;
@@ -319,36 +319,14 @@ function setLang(lang){
   document.getElementById('btnEn').classList.toggle('active', lang === 'en');
 }
 
-async function downloadPDF(){
-  const btn = document.getElementById('downloadBtn');
-  const label = btn.querySelector(currentLang === 'ar' ? '.lang-ar' : '.lang-en');
-  const originalText = label.textContent;
-  btn.disabled = true;
-  label.textContent = currentLang === 'ar' ? 'جاري التجهيز...' : 'Preparing...';
-
-  const el = document.getElementById('cv');
-
-  try{
-    const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#EFF2EC' });
-    const imgData = canvas.toDataURL('image/jpeg', 0.98);
-
-    const pdfWidth = 210; // A4 width in mm
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({ unit: 'mm', format: [pdfWidth, pdfHeight], orientation: 'portrait' });
-    pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-
-    const filename = currentLang === 'ar'
-      ? 'عيد_رمضان_خليفة_السيرة_الذاتية.pdf'
-      : 'Eid_Ramadan_Khalifa_CV.pdf';
-    pdf.save(filename);
-  } catch(err){
-    alert(currentLang === 'ar' ? 'حصل خطأ أثناء إنشاء الملف، جرّب تاني.' : 'Something went wrong generating the file, please try again.');
-  } finally {
-    btn.disabled = false;
-    label.textContent = originalText;
-  }
+function downloadPDF(){
+  // Use the browser's native print-to-PDF so Arabic text keeps its
+  // correct letter shaping (image-based export breaks Arabic script).
+  document.title = currentLang === 'ar'
+    ? 'عيد_رمضان_خليفة_السيرة_الذاتية'
+    : 'Eid_Ramadan_Khalifa_CV';
+  window.print();
+  setTimeout(() => { document.title = originalTitle; }, 500);
 }
 </script>
 
